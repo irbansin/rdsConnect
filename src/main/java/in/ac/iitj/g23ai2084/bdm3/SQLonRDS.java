@@ -94,6 +94,14 @@ public class SQLonRDS {
             stmt.executeUpdate(createCompany);
             stmt.executeUpdate(createStockPrice);
             System.out.println("Tables created successfully");
+        } catch (SQLException e) {
+            // Handle SQL exceptions
+            System.err.println("SQL Error occurred while creating tables: " + e.getMessage());
+            e.printStackTrace(); // Log the stack trace for debugging purposes
+        } catch (Exception e) {
+            // Handle any other unexpected exceptions
+            System.err.println("Unexpected error occurred: " + e.getMessage());
+            e.printStackTrace();
         }
     }
 
@@ -153,6 +161,14 @@ public class SQLonRDS {
             stmt.executeUpdate(insertCompany);
             stmt.executeUpdate(insertStockPrice);
             System.out.println("Records inserted successfully");
+        } catch (SQLException e) {
+            // Handle SQL exceptions
+            System.err.println("SQL Error occurred while creating tables: " + e.getMessage());
+            e.printStackTrace(); // Log the stack trace for debugging purposes
+        } catch (Exception e) {
+            // Handle any other unexpected exceptions
+            System.err.println("Unexpected error occurred: " + e.getMessage());
+            e.printStackTrace();
         }
     }
 
@@ -165,6 +181,14 @@ public class SQLonRDS {
         try (Statement stmt = con.createStatement()) {
             int rowsDeleted = stmt.executeUpdate(deleteStockPrices);
             System.out.println(rowsDeleted + " records deleted");
+        } catch (SQLException e) {
+            // Handle SQL exceptions
+            System.err.println("SQL Error occurred while creating tables: " + e.getMessage());
+            e.printStackTrace(); // Log the stack trace for debugging purposes
+        } catch (Exception e) {
+            // Handle any other unexpected exceptions
+            System.err.println("Unexpected error occurred: " + e.getMessage());
+            e.printStackTrace();
         }
     }
 
