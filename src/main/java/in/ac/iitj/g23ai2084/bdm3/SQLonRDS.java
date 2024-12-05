@@ -20,11 +20,11 @@ public class SQLonRDS {
         SQLonRDS q = new SQLonRDS();
         try {
             q.connect();
-            q.create(); // TODO: Implement as per requirements
-            q.insert(); // TODO: Implement as per requirements
-            q.queryOne(); // TODO: Implement as per requirements
-            q.queryTwo(); // TODO: Implement as per requirements
-            q.queryThree(); // TODO: Implement as per requirements
+            q.create(); 
+            q.insert(); 
+            System.out.println(resultSetToString(q.queryOne(),10)); 
+            System.out.println(resultSetToString(q.queryTwo(),10)); 
+            System.out.println(resultSetToString(q.queryThree(),10)); 
             q.close();
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
