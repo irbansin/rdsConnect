@@ -3,5 +3,17 @@
     "java.project.outputPath": "bin",
     "java.project.referencedLibraries": [
         "lib/**/*.jar"
+    ],
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "server": "g23ai2084-instance-1.c5s020mekmwl.eu-north-1.rds.amazonaws.com",
+            "port": 5432,
+            "driver": "PostgreSQL",
+            "name": "assignment3",
+            "group": "IITDB",
+            "database": "postgres",
+            "username": "postgres"
+        }
     ]
 }

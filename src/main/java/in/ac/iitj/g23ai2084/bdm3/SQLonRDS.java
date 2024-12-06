@@ -22,8 +22,13 @@ public class SQLonRDS {
             q.connect();
             q.create(); 
             q.insert(); 
+            System.out.println("QUERY One");
             System.out.println(resultSetToString(q.queryOne(),10)); 
+            System.out.println("_______________________________________________________");
+            System.out.println("QUERY Two");
             System.out.println(resultSetToString(q.queryTwo(),10)); 
+            System.out.println("_______________________________________________________");
+            System.out.println("QUERY Three");
             System.out.println(resultSetToString(q.queryThree(),10)); 
             q.close();
         } catch (SQLException | ClassNotFoundException e) {
@@ -222,17 +227,17 @@ public class SQLonRDS {
 
     public ResultSet queryThree() throws SQLException {
         String query = """
-                    SELECT c.name, c.ticker, sp.closePrice
-                    FROM company c
-                    LEFT JOIN stockprice sp ON c.id = sp.companyId
-                    WHERE sp.priceDate = '2022-08-30'
-                      AND (sp.closePrice <= 1.10 * (
-                            SELECT AVG(sp1.closePrice)
-                            FROM stockprice sp1
-                            WHERE sp1.companyId = sp.companyId
-                              AND sp1.priceDate BETWEEN '2022-08-15' AND '2022-08-19'
-                          ) OR c.ticker IS NULL)
-                    ORDER BY c.name ASC
+    SELECT c.name, c.ticker, sp.closePrice
+    FROM company c
+    LEFT JOIN stockprice sp ON c.id = sp.companyId
+    WHERE sp.priceDate = '2022-08-30'
+        AND (sp.closePrice <= 1.10 * (
+            SELECT AVG(sp1.closePrice)
+            FROM stockprice sp1
+            WHERE sp1.companyId = sp.companyId
+                AND sp1.priceDate BETWEEN '2022-08-15' AND '2022-08-19'
+            ) OR c.ticker IS NULL)
+    ORDER BY c.name ASC
                 """;
         Statement stmt = con.createStatement();
         return stmt.executeQuery(query);
